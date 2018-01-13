@@ -17,39 +17,13 @@ namespace Swincher
             {
                 Bindings.Add(binding);
             }
-
-            Bindings.AddNew();
-        }
-
-        private void BindingGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
-        {
-            Swincher.Core.Binding lastRecord = (Swincher.Core.Binding) Bindings[Bindings.Count - 1];
-
-            if (!lastRecord.IsEmpty)
-            {
-                BindingGridView.AddNewRow();
-            }
-            else
-            {
-                DeleteDuplicateEmptyRows();
-            }
-        }
-
-        private void DeleteDuplicateEmptyRows()
-        {
-            while (Bindings.Count > 1 &&
-                   ((Swincher.Core.Binding) Bindings[Bindings.Count - 1]).IsEmpty &&
-                   ((Swincher.Core.Binding) Bindings[Bindings.Count - 2]).IsEmpty)
-            {
-                BindingGridView.DeleteRow(Bindings.Count - 1);
-            }
         }
 
         private void BindingGridView_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == System.Windows.Forms.Keys.Delete)
             {
-                BindingGridView.DeleteSelectedRows();
+                BindingsGridView.DeleteSelectedRows();
             }
         }
     }

@@ -31,18 +31,18 @@
             this.Theme = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.Tabs = new DevExpress.XtraTab.XtraTabControl();
             this.BindingsPage = new DevExpress.XtraTab.XtraTabPage();
-            this.BindingGrid = new DevExpress.XtraGrid.GridControl();
-            this.Bindings = new System.Windows.Forms.BindingSource();
-            this.BindingGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colExePath = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colKeys = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GeneralPage = new DevExpress.XtraTab.XtraTabPage();
+            this.Bindings = new System.Windows.Forms.BindingSource();
+            this.BindingsGrid = new DevExpress.XtraGrid.GridControl();
+            this.BindingsGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colApplicationPath = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colKeys = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Tabs)).BeginInit();
             this.Tabs.SuspendLayout();
             this.BindingsPage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BindingGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bindings)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BindingGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingsGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingsGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // Theme
@@ -63,46 +63,49 @@
             // 
             // BindingsPage
             // 
-            this.BindingsPage.Controls.Add(this.BindingGrid);
+            this.BindingsPage.Controls.Add(this.BindingsGrid);
             this.BindingsPage.Name = "BindingsPage";
             this.BindingsPage.Size = new System.Drawing.Size(457, 234);
             this.BindingsPage.Text = "Bindings";
             // 
-            // BindingGrid
+            // GeneralPage
             // 
-            this.BindingGrid.DataSource = this.Bindings;
-            this.BindingGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BindingGrid.Location = new System.Drawing.Point(0, 0);
-            this.BindingGrid.MainView = this.BindingGridView;
-            this.BindingGrid.Name = "BindingGrid";
-            this.BindingGrid.Size = new System.Drawing.Size(457, 234);
-            this.BindingGrid.TabIndex = 0;
-            this.BindingGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.BindingGridView});
+            this.GeneralPage.Name = "GeneralPage";
+            this.GeneralPage.Size = new System.Drawing.Size(457, 234);
+            this.GeneralPage.Text = "General";
             // 
             // Bindings
             // 
             this.Bindings.DataSource = typeof(Swincher.Core.Binding);
             // 
-            // BindingGridView
+            // BindingsGrid
             // 
-            this.BindingGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colExePath,
+            this.BindingsGrid.DataSource = this.Bindings;
+            this.BindingsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BindingsGrid.Location = new System.Drawing.Point(0, 0);
+            this.BindingsGrid.MainView = this.BindingsGridView;
+            this.BindingsGrid.Name = "BindingsGrid";
+            this.BindingsGrid.Size = new System.Drawing.Size(457, 234);
+            this.BindingsGrid.TabIndex = 0;
+            this.BindingsGrid.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.BindingsGridView});
+            // 
+            // BindingsGridView
+            // 
+            this.BindingsGridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colApplicationPath,
             this.colKeys});
-            this.BindingGridView.GridControl = this.BindingGrid;
-            this.BindingGridView.Name = "BindingGridView";
-            this.BindingGridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
-            this.BindingGridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
-            this.BindingGridView.OptionsSelection.MultiSelect = true;
-            this.BindingGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.BindingGridView_CellValueChanged);
-            this.BindingGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BindingGridView_KeyDown);
+            this.BindingsGridView.GridControl = this.BindingsGrid;
+            this.BindingsGridView.Name = "BindingsGridView";
+            this.BindingsGridView.OptionsView.NewItemRowPosition = DevExpress.XtraGrid.Views.Grid.NewItemRowPosition.Bottom;
+            this.BindingsGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BindingGridView_KeyDown);
             // 
-            // colExePath
+            // colApplicationPath
             // 
-            this.colExePath.FieldName = "ExePath";
-            this.colExePath.Name = "colExePath";
-            this.colExePath.Visible = true;
-            this.colExePath.VisibleIndex = 0;
+            this.colApplicationPath.FieldName = "ApplicationPath";
+            this.colApplicationPath.Name = "colApplicationPath";
+            this.colApplicationPath.Visible = true;
+            this.colApplicationPath.VisibleIndex = 0;
             // 
             // colKeys
             // 
@@ -110,12 +113,6 @@
             this.colKeys.Name = "colKeys";
             this.colKeys.Visible = true;
             this.colKeys.VisibleIndex = 1;
-            // 
-            // GeneralPage
-            // 
-            this.GeneralPage.Name = "GeneralPage";
-            this.GeneralPage.Size = new System.Drawing.Size(457, 234);
-            this.GeneralPage.Text = "General";
             // 
             // SwincherForm
             // 
@@ -129,9 +126,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Tabs)).EndInit();
             this.Tabs.ResumeLayout(false);
             this.BindingsPage.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BindingGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Bindings)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BindingGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingsGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BindingsGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -142,10 +139,10 @@
         private DevExpress.XtraTab.XtraTabControl Tabs;
         private DevExpress.XtraTab.XtraTabPage BindingsPage;
         private DevExpress.XtraTab.XtraTabPage GeneralPage;
-        private DevExpress.XtraGrid.GridControl BindingGrid;
-        private DevExpress.XtraGrid.Views.Grid.GridView BindingGridView;
         private System.Windows.Forms.BindingSource Bindings;
-        private DevExpress.XtraGrid.Columns.GridColumn colExePath;
+        private DevExpress.XtraGrid.GridControl BindingsGrid;
+        private DevExpress.XtraGrid.Views.Grid.GridView BindingsGridView;
+        private DevExpress.XtraGrid.Columns.GridColumn colApplicationPath;
         private DevExpress.XtraGrid.Columns.GridColumn colKeys;
     }
 }
