@@ -1,6 +1,6 @@
 ﻿namespace Switcher.Core
 {
-    enum Keys
+    public enum Keys
     {
         A,
         Add,
