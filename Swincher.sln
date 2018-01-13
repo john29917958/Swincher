@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{14E9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swincher", "Windows\Swincher\Swincher.csproj", "{A45FB062-363E-4D32-9AF6-3F1BE2ED23EE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{14629959-4E55-4647-B84C-677B7D45A3E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{3D1FE8C1-2E31-4D61-A6F1-9FFCC9BE666D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,10 +19,10 @@ Global
 		{A45FB062-363E-4D32-9AF6-3F1BE2ED23EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A45FB062-363E-4D32-9AF6-3F1BE2ED23EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A45FB062-363E-4D32-9AF6-3F1BE2ED23EE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14629959-4E55-4647-B84C-677B7D45A3E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14629959-4E55-4647-B84C-677B7D45A3E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14629959-4E55-4647-B84C-677B7D45A3E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14629959-4E55-4647-B84C-677B7D45A3E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D1FE8C1-2E31-4D61-A6F1-9FFCC9BE666D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D1FE8C1-2E31-4D61-A6F1-9FFCC9BE666D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D1FE8C1-2E31-4D61-A6F1-9FFCC9BE666D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D1FE8C1-2E31-4D61-A6F1-9FFCC9BE666D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

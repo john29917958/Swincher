@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Swincher.Core
+namespace Switcher.Core
 {
     public abstract class Window
     {

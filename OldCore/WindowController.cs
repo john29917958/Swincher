@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Swincher.Core
+namespace Switcher.Core
 {
     public class WindowController
     {

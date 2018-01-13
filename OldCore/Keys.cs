@@ -1,4 +1,4 @@
-﻿namespace Swincher.Core
+﻿namespace Switcher.Core
 {
     public enum Keys
     {
