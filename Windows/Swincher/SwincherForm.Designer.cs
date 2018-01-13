@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.Theme = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.Theme = new DevExpress.LookAndFeel.DefaultLookAndFeel();
             this.Tabs = new DevExpress.XtraTab.XtraTabControl();
             this.BindingsPage = new DevExpress.XtraTab.XtraTabPage();
             this.BindingGrid = new DevExpress.XtraGrid.GridControl();
-            this.Bindings = new System.Windows.Forms.BindingSource(this.components);
+            this.Bindings = new System.Windows.Forms.BindingSource();
             this.BindingGridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colExePath = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colKeys = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -94,7 +93,9 @@
             this.BindingGridView.Name = "BindingGridView";
             this.BindingGridView.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.True;
             this.BindingGridView.OptionsBehavior.AllowDeleteRows = DevExpress.Utils.DefaultBoolean.True;
+            this.BindingGridView.OptionsSelection.MultiSelect = true;
             this.BindingGridView.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.BindingGridView_CellValueChanged);
+            this.BindingGridView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BindingGridView_KeyDown);
             // 
             // colExePath
             // 

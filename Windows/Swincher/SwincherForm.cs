@@ -44,5 +44,13 @@ namespace Swincher
                 BindingGridView.DeleteRow(Bindings.Count - 1);
             }
         }
+
+        private void BindingGridView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == System.Windows.Forms.Keys.Delete)
+            {
+                BindingGridView.DeleteSelectedRows();
+            }
+        }
     }
 }
