@@ -4,7 +4,7 @@ using Swincher.Core;
 
 namespace Swincher
 {
-    class WindowsWindow : Window
+    class WindowsApp : App
     {
         public override bool BringToFront()
         {

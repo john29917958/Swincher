@@ -2,16 +2,16 @@
 
 namespace Swincher.Core
 {
-    public class WindowController
+    public class AppsController
     {
-        public Dictionary<Window, Keys[]> Map { get; protected set; }
+        public Dictionary<App, Keys[]> Map { get; protected set; }
 
-        public WindowController()
+        public AppsController()
         {
-            Map = new Dictionary<Window, Keys[]>();
+            Map = new Dictionary<App, Keys[]>();
         }
 
-        public void Register(Window window, Keys[] keys)
+        public void Register(App window, Keys[] keys)
         {
             if (Map.ContainsKey(window))
             {
@@ -23,9 +23,9 @@ namespace Swincher.Core
 
         public bool Focus(Keys[] keys)
         {
-            foreach (KeyValuePair<Window, Keys[]> pair in Map)
+            foreach (KeyValuePair<App, Keys[]> pair in Map)
             {
-                Window window = pair.Key;
+                App window = pair.Key;
                 List<Keys> keySignals = new List<Keys>(pair.Value);
 
                 foreach (Keys key in keys)

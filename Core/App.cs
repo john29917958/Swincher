@@ -2,7 +2,7 @@
 
 namespace Swincher.Core
 {
-    public abstract class Window
+    public abstract class App
     {
         public Process Process { get; protected set; }
 
