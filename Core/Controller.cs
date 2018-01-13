@@ -1,6 +1,6 @@
 ﻿namespace Switcher.Core
 {
-    class KeyEventController
+    class Controller
     {
     }
 }

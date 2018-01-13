@@ -15,7 +15,7 @@ namespace Swincher
             Application.SetCompatibleTextRenderingDefault(false);
 
             Hooker hooker = new Hooker();
-
+            
             Form form = new Form();
             form.FormClosing += (sender, args) => { hooker.UnHook(); };
             hooker.Hook();
