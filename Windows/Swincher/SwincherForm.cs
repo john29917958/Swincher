@@ -7,20 +7,23 @@ namespace Swincher
     public partial class SwincherForm : Form
     {
         private readonly Config _config;
-        private readonly BindingList<Swincher.Core.Binding> _bindings;
 
         public SwincherForm()
         {
             InitializeComponent();
             _config = Config.Load();
-            _bindings = new BindingList<Swincher.Core.Binding>(_config.Bindings);
-            BindingGrid.DataSource = _bindings;
-            BindingGridView.AddNewRow();
+
+            foreach (Swincher.Core.Binding binding in _config.Bindings)
+            {
+                Bindings.Add(binding);
+            }
+
+            Bindings.AddNew();
         }
 
         private void BindingGridView_CellValueChanged(object sender, DevExpress.XtraGrid.Views.Base.CellValueChangedEventArgs e)
         {
-            Swincher.Core.Binding lastRecord =_bindings[_bindings.Count - 1];
+            Swincher.Core.Binding lastRecord = (Swincher.Core.Binding) Bindings[Bindings.Count - 1];
 
             if (!lastRecord.IsEmpty)
             {
@@ -34,11 +37,11 @@ namespace Swincher
 
         private void DeleteDuplicateEmptyRows()
         {
-            while (_bindings.Count > 1 &&
-                _bindings[_bindings.Count - 1].IsEmpty &&
-                _bindings[_bindings.Count - 2].IsEmpty)
+            while (Bindings.Count > 1 &&
+                   ((Swincher.Core.Binding) Bindings[Bindings.Count - 1]).IsEmpty &&
+                   ((Swincher.Core.Binding) Bindings[Bindings.Count - 2]).IsEmpty)
             {
-                BindingGridView.DeleteRow(_bindings.Count - 1);
+                BindingGridView.DeleteRow(Bindings.Count - 1);
             }
         }
     }
