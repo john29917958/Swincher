@@ -16,7 +16,7 @@ namespace Swincher
 
             Hooker hooker = new Hooker();
             
-            Form form = new Form();
+            SwincherForm form = new SwincherForm();
             form.FormClosing += (sender, args) => { hooker.UnHook(); };
             hooker.Hook();
 

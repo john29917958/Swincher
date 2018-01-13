@@ -1,36 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using Newtonsoft.Json;
+using Swincher.Core.Properties;
 
 namespace Swincher.Core
 {
     public class Config
     {
-        public Dictionary<App, List<Keys[]>> Bindings { get; protected set; }
+        public const string FileName = "config.json";
+
+        public static string ConfigPath
+        {
+            get
+            {
+                string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+                return Path.Combine(appDataPath, Resources.AppName, FileName);
+            }
+        }
+        
+        public List<Binding> Bindings { get; protected set; }
 
         public Config()
         {
-            Bindings = new Dictionary<App, List<Keys[]>>();
+            Bindings = new List<Binding>();
         }
 
-        public static Config Load(string path)
+        public static Config Load()
         {
-            if (!File.Exists(path))
+            if (!File.Exists(ConfigPath))
             {
-                throw new ArgumentException("Config file cannot be found at path\"" + path + '"');
+                Config c = new Config();
+                c.Save();
+                return c;
             }
 
-            string json = File.ReadAllText(path);
+            string json = File.ReadAllText(ConfigPath);
             Config config = JsonConvert.DeserializeObject<Config>(json);
 
             return config;
         }
 
-        public void Save(string path)
+        public void Save()
         {
             string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(path, json);
+            string dir = Path.GetDirectoryName(ConfigPath);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            File.WriteAllText(ConfigPath, json);
         }
     }
 }
