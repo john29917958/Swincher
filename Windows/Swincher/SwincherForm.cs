@@ -8,13 +8,13 @@ namespace Swincher
     public partial class SwincherForm : Form
     {
         private readonly Config _config;
-        private readonly List<SKeys> _keyCombination;
+        private readonly List<KeyCode> _keyCombination;
 
         public SwincherForm()
         {
             InitializeComponent();
 
-            _keyCombination = new List<SKeys>();
+            _keyCombination = new List<KeyCode>();
 
             _config = Config.Load();
             BindingsGrid.DataSource = _config.Bindings;
@@ -71,18 +71,18 @@ namespace Swincher
                 _keyCombination.Clear();
                 if (e.Control)
                 {
-                    _keyCombination.Add(SKeys.Control);
+                    _keyCombination.Add(KeyCode.Control);
                 }
                 if (e.Shift)
                 {
-                    _keyCombination.Add(SKeys.Shift);
+                    _keyCombination.Add(KeyCode.Shift);
                 }
                 if (e.Alt)
                 {
-                    _keyCombination.Add(SKeys.Alt);
+                    _keyCombination.Add(KeyCode.Alt);
                 }
                 string keyName = e.KeyCode.ToString();
-                _keyCombination.Add((SKeys)Enum.Parse(typeof(SKeys), keyName));
+                _keyCombination.Add((KeyCode)Enum.Parse(typeof(KeyCode), keyName));
 
                 UpdateSwitchModeKeysInputText();
             }
@@ -92,7 +92,7 @@ namespace Swincher
         {
             SwitchModeKeysInput.Text = string.Empty;
 
-            foreach (SKeys key in _keyCombination)
+            foreach (KeyCode key in _keyCombination)
             {
                 SwitchModeKeysInput.Text += key.ToString() + ", ";
             }

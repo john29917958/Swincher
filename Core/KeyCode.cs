@@ -1,6 +1,6 @@
 ﻿namespace Swincher.Core
 {
-    public enum SKeys
+    public enum KeyCode
     {
         A,
         Add,

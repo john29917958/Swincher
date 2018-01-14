@@ -25,13 +25,13 @@ namespace Swincher.Core
         public bool AutoActivate { get; set; }
         public bool AutoOpenApps { get; set; }
         public BindingList<AppBinding> Bindings { get; set; }
-        public List<SKeys> EnterSwitchingModeKeys { get; set; }
+        public List<KeyCode> EnterSwitchingModeKeys { get; set; }
         public bool StartWithOs { get; set; }
 
         public Config()
         {
             Bindings = new BindingList<AppBinding>();
-            EnterSwitchingModeKeys = new List<SKeys>();
+            EnterSwitchingModeKeys = new List<KeyCode>();
         }
 
         public static Config Load()

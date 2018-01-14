@@ -6,24 +6,24 @@ namespace Swincher.Support
 {
     static class KeyCodeConverter
     {
-        public static SKeys Convert(Keys key)
+        public static KeyCode Convert(Keys key)
         {
             if (key == Keys.ControlKey || key == Keys.Control || key == Keys.LControlKey || key == Keys.RControlKey)
             {
-                return SKeys.Control;
+                return KeyCode.Control;
             }
 
             if (key == Keys.Alt || key == Keys.Menu || key == Keys.LMenu || key == Keys.RMenu)
             {
-                return SKeys.Alt;
+                return KeyCode.Alt;
             }
 
             if (key == Keys.Shift || key == Keys.ShiftKey || key == Keys.LShiftKey || key == Keys.RShiftKey)
             {
-                return SKeys.Shift;
+                return KeyCode.Shift;
             }
 
-            return (SKeys) Enum.Parse(typeof(SKeys), key.ToString());
+            return (KeyCode) Enum.Parse(typeof(KeyCode), key.ToString());
         }
     }
 }
