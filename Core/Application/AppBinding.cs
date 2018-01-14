@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using Newtonsoft.Json;
 
 namespace Swincher.Core.Application
 {
@@ -8,6 +9,7 @@ namespace Swincher.Core.Application
         public string Keys { get; set; }
 
         [Browsable(false)]
+        [JsonIgnore]
         public bool IsEmpty
         {
             get { return string.IsNullOrWhiteSpace(ApplicationPath) && string.IsNullOrWhiteSpace(Keys); }

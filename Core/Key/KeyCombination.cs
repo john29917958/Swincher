@@ -17,6 +17,16 @@ namespace Swincher.Core.Key
             Keys = new List<KeyCode>();
         }
 
+        public KeyCombination(KeyCode[] keyCodes)
+        {
+            Keys = new List<KeyCode>(keyCodes);
+        }
+
+        public KeyCombination(List<KeyCode> keyCodes)
+        {
+            Keys = new List<KeyCode>(keyCodes);
+        }
+
         public bool HasModifier()
         {
             return Keys.Contains(KeyCode.Alt) || Keys.Contains(KeyCode.Control) || Keys.Contains(KeyCode.Shift);

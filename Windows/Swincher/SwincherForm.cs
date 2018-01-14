@@ -12,18 +12,17 @@ namespace Swincher
     {
         private readonly Config _config;
         private readonly KeyCombination _keyCombination;
-        private readonly List<KeyCode> _switchingModeKeyCombination;
         private readonly HashSet<Keys> _pressedKeys;
 
         public SwincherForm()
         {
             InitializeComponent();
 
-            _keyCombination = new KeyCombination();
-            _switchingModeKeyCombination = new List<KeyCode>();
-            _pressedKeys = new HashSet<Keys>();
-
             _config = Config.Load();
+            _keyCombination = new KeyCombination(_config.EnterSwitchingModeKeys);
+            UpdateSwitchModeKeysInputText();
+            _pressedKeys = new HashSet<Keys>();
+            
             BindingsGrid.DataSource = _config.Bindings;
             StartWithOsCheckBox.Checked = _config.StartWithOs;
             AutoActivateCheckBox.Checked = _config.AutoActivate;
@@ -51,12 +50,6 @@ namespace Swincher
         private void AutoOpenAppCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             _config.AutoOpenApps = AutoOpenAppCheckBox.Checked;
-        }
-
-        private void SwitchModeKeysInput_Enter(object sender, EventArgs e)
-        {
-            SwitchModeKeysInput.Text = string.Empty;
-            _keyCombination.Reset();
         }
 
         private void SwitchModeKeysInput_KeyDown(object sender, KeyEventArgs e)
@@ -92,9 +85,25 @@ namespace Swincher
             if (_pressedKeys.Count == 0 && !_keyCombination.HasNonModifier())
             {
                 _keyCombination.Reset();
+                _keyCombination.Keys.AddRange(_config.EnterSwitchingModeKeys);
             }
 
             UpdateSwitchModeKeysInputText();
+        }
+
+        private void SwitchModeKeysInput_Leave(object sender, EventArgs e)
+        {
+            if (_keyCombination.Keys.Count == 0)
+            {
+                _keyCombination.Keys.AddRange(_config.EnterSwitchingModeKeys);
+                UpdateSwitchModeKeysInputText();
+            }
+            else
+            {
+                _config.EnterSwitchingModeKeys.Clear();
+                _config.EnterSwitchingModeKeys.AddRange(_keyCombination.Keys);
+                _config.Save();
+            }
         }
     }
 }

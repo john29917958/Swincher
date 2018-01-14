@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using Swincher.Core.Application;
 using Swincher.Core.Key;
 using Swincher.Core.Properties;
@@ -25,9 +26,14 @@ namespace Swincher.Core.Configuration
         }
         
         public bool AutoActivate { get; set; }
+
         public bool AutoOpenApps { get; set; }
+
         public BindingList<AppBinding> Bindings { get; set; }
+
+        [JsonProperty("EnterSwitchingModeKeys", ItemConverterType = typeof(StringEnumConverter))]
         public List<KeyCode> EnterSwitchingModeKeys { get; set; }
+
         public bool StartWithOs { get; set; }
 
         public Config()
@@ -41,12 +47,18 @@ namespace Swincher.Core.Configuration
             if (!File.Exists(ConfigPath))
             {
                 Config c = new Config();
+                c.EnterSwitchingModeKeys = new List<KeyCode> {KeyCode.Alt, KeyCode.S};
                 c.Save();
                 return c;
             }
 
             string json = File.ReadAllText(ConfigPath);
             Config config = JsonConvert.DeserializeObject<Config>(json);
+            if (config.EnterSwitchingModeKeys.Count == 0)
+            {
+                config.EnterSwitchingModeKeys = new List<KeyCode> { KeyCode.Alt, KeyCode.S };
+                config.Save();
+            }
 
             return config;
         }
