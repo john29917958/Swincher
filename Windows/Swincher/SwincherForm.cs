@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Swincher.Core;
 
 namespace Swincher
@@ -13,7 +12,7 @@ namespace Swincher
             InitializeComponent();
             _config = Config.Load();
 
-            foreach (Swincher.Core.Binding binding in _config.Bindings)
+            foreach (AppBinding binding in _config.Bindings)
             {
                 Bindings.Add(binding);
             }

@@ -20,11 +20,11 @@ namespace Swincher.Core
             }
         }
         
-        public List<Binding> Bindings { get; protected set; }
+        public List<AppBinding> Bindings { get; protected set; }
 
         public Config()
         {
-            Bindings = new List<Binding>();
+            Bindings = new List<AppBinding>();
         }
 
         public static Config Load()

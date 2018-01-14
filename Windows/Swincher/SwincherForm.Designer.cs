@@ -76,7 +76,7 @@
             // 
             // Bindings
             // 
-            this.Bindings.DataSource = typeof(Swincher.Core.Binding);
+            this.Bindings.DataSource = typeof(Swincher.Core.AppBinding);
             // 
             // BindingsGrid
             // 

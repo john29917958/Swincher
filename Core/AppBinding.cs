@@ -2,7 +2,7 @@
 
 namespace Swincher.Core
 {
-    public class Binding
+    public class AppBinding
     {
         public string ApplicationPath { get; set; }
         public string Keys { get; set; }
