@@ -185,6 +185,7 @@
             this.SwitchModeKeysInput.TabIndex = 1;
             this.SwitchModeKeysInput.Enter += new System.EventHandler(this.SwitchModeKeysInput_Enter);
             this.SwitchModeKeysInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SwitchModeKeysInput_KeyDown);
+            this.SwitchModeKeysInput.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SwitchModeKeysInput_KeyUp);
             // 
             // SwitchModeLabel
             // 

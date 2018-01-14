@@ -4,19 +4,24 @@ using System.Windows.Forms;
 using Swincher.Core;
 using Swincher.Core.Configuration;
 using Swincher.Core.Key;
+using Swincher.Support;
 
 namespace Swincher
 {
     public partial class SwincherForm : Form
     {
         private readonly Config _config;
-        private readonly List<KeyCode> _keyCombination;
+        private readonly KeyCombination _keyCombination;
+        private readonly List<KeyCode> _switchingModeKeyCombination;
+        private readonly HashSet<Keys> _pressedKeys;
 
         public SwincherForm()
         {
             InitializeComponent();
 
-            _keyCombination = new List<KeyCode>();
+            _keyCombination = new KeyCombination();
+            _switchingModeKeyCombination = new List<KeyCode>();
+            _pressedKeys = new HashSet<Keys>();
 
             _config = Config.Load();
             BindingsGrid.DataSource = _config.Bindings;
@@ -51,55 +56,49 @@ namespace Swincher
         private void SwitchModeKeysInput_Enter(object sender, EventArgs e)
         {
             SwitchModeKeysInput.Text = string.Empty;
-            _keyCombination.Clear();
+            _keyCombination.Reset();
         }
 
         private void SwitchModeKeysInput_KeyDown(object sender, KeyEventArgs e)
         {
+            if (_pressedKeys.Count == 0)
+            {
+                _keyCombination.Reset();
+            }
+
+            _pressedKeys.Add(e.KeyCode);
             if (!SwitchModeKeysInput.IsEditorActive) return;
             if (e.Modifiers == Keys.None) return;
 
             if (e.KeyCode == Keys.Escape)
             {
-                _keyCombination.Clear();
-                _keyCombination.AddRange(_config.EnterSwitchingModeKeys);
-                GeneralPage.Focus();
+                _keyCombination.Reset();
+                _keyCombination.Keys.AddRange(_config.EnterSwitchingModeKeys);
+                SwitchModeLabel.Focus();
                 UpdateSwitchModeKeysInputText();
                 return;
             }
 
-            if (e.KeyCode != Keys.ControlKey && e.KeyCode != Keys.Menu && e.KeyCode != Keys.ShiftKey)
-            {
-                _keyCombination.Clear();
-                if (e.Control)
-                {
-                    _keyCombination.Add(KeyCode.Control);
-                }
-                if (e.Shift)
-                {
-                    _keyCombination.Add(KeyCode.Shift);
-                }
-                if (e.Alt)
-                {
-                    _keyCombination.Add(KeyCode.Alt);
-                }
-                string keyName = e.KeyCode.ToString();
-                _keyCombination.Add((KeyCode)Enum.Parse(typeof(KeyCode), keyName));
-
-                UpdateSwitchModeKeysInputText();
-            }
+            _keyCombination.Next(KeyCodeConverter.Convert(e.KeyCode));
+            UpdateSwitchModeKeysInputText();
         }
 
         private void UpdateSwitchModeKeysInputText()
         {
-            SwitchModeKeysInput.Text = string.Empty;
+            SwitchModeKeysInput.Text = _keyCombination.ToString();
+        }
 
-            foreach (KeyCode key in _keyCombination)
+        private void SwitchModeKeysInput_KeyUp(object sender, KeyEventArgs e)
+        {
+            _pressedKeys.Remove(e.KeyCode);
+            if (e.Modifiers != Keys.None) return;
+
+            if (_pressedKeys.Count == 0 && !_keyCombination.HasNonModifier())
             {
-                SwitchModeKeysInput.Text += key.ToString() + ", ";
+                _keyCombination.Reset();
             }
 
-            SwitchModeKeysInput.Text = SwitchModeKeysInput.Text.Substring(0, SwitchModeKeysInput.Text.Length - 2);
+            UpdateSwitchModeKeysInputText();
         }
     }
 }
