@@ -67,14 +67,10 @@ namespace Swincher
             }
 
             _pressedKeys.Add(e.KeyCode);
-            if (!SwitchModeKeysInput.IsEditorActive) return;
-            if (e.Modifiers == Keys.None) return;
-
             if (e.KeyCode == Keys.Escape)
             {
                 _keyCombination.Reset();
                 _keyCombination.Keys.AddRange(_config.EnterSwitchingModeKeys);
-                SwitchModeLabel.Focus();
                 UpdateSwitchModeKeysInputText();
                 return;
             }
