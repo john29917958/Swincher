@@ -1,2 +1,2 @@
 # Swincher
-An assistant who helps you to easily switching between opened applications.
+Easy window switching. Level ups your efficiency.
