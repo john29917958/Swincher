@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
+using System.ComponentModel;
 using System.IO;
 using Newtonsoft.Json;
 using Swincher.Core.Properties;
@@ -20,11 +19,11 @@ namespace Swincher.Core
             }
         }
         
-        public List<AppBinding> Bindings { get; protected set; }
+        public BindingList<AppBinding> Bindings { get; protected set; }
 
         public Config()
         {
-            Bindings = new List<AppBinding>();
+            Bindings = new BindingList<AppBinding>();
         }
 
         public static Config Load()

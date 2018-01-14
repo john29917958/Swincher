@@ -10,12 +10,10 @@ namespace Swincher
         public SwincherForm()
         {
             InitializeComponent();
-            _config = Config.Load();
 
-            foreach (AppBinding binding in _config.Bindings)
-            {
-                Bindings.Add(binding);
-            }
+            _config = Config.Load();
+            BindingsGrid.DataSource = _config.Bindings;
+            
         }
 
         private void BindingGridView_KeyDown(object sender, KeyEventArgs e)
