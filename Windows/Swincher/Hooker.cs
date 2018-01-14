@@ -7,19 +7,28 @@ namespace Swincher
 {
     class Hooker
     {
+        public delegate void KeyEnteredEvent(Keys[] keys);
+
+        public KeyEnteredEvent OnKeyEntered { get; set; }
+
         private const int WindowsHookKeyboardLl = 13;
 
         private const int WmKeydown = 0x0100;
 
-        private static IntPtr _hookId = IntPtr.Zero;
+        private IntPtr _hookId = IntPtr.Zero;
 
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
 
-        private static readonly LowLevelKeyboardProc Proc = HookCallback;
+        private readonly LowLevelKeyboardProc _proc;
+
+        public Hooker()
+        {
+            _proc = HookCallback;
+        }
 
         public void Hook()
         {
-            _hookId = SetHook(Proc);
+            _hookId = SetHook(_proc);
         }
 
         public void UnHook()
@@ -50,12 +59,16 @@ namespace Swincher
             }
         }
 
-        private static IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
+        private IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0 && wParam == (IntPtr)WmKeydown)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                Console.WriteLine((Keys)vkCode);
+
+                if (OnKeyEntered != null)
+                {
+                    OnKeyEntered(new[] {(Keys) vkCode});
+                }
             }
 
             return CallNextHookEx(_hookId, nCode, wParam, lParam);

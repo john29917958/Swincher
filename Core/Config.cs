@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Newtonsoft.Json;
@@ -8,8 +9,10 @@ namespace Swincher.Core
 {
     public class Config
     {
+        [JsonIgnore]
         public const string FileName = "config.json";
 
+        [JsonIgnore]
         public static string ConfigPath
         {
             get
@@ -19,11 +22,16 @@ namespace Swincher.Core
             }
         }
         
-        public BindingList<AppBinding> Bindings { get; protected set; }
+        public bool AutoActivate { get; set; }
+        public bool AutoOpenApps { get; set; }
+        public BindingList<AppBinding> Bindings { get; set; }
+        public List<SKeys> EnterSwitchingModeKeys { get; set; }
+        public bool StartWithOs { get; set; }
 
         public Config()
         {
             Bindings = new BindingList<AppBinding>();
+            EnterSwitchingModeKeys = new List<SKeys>();
         }
 
         public static Config Load()

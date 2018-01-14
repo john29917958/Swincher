@@ -4,14 +4,14 @@ namespace Swincher.Core
 {
     public class AppsController
     {
-        public Dictionary<App, Keys[]> Map { get; protected set; }
+        public Dictionary<App, SKeys[]> Map { get; protected set; }
 
         public AppsController()
         {
-            Map = new Dictionary<App, Keys[]>();
+            Map = new Dictionary<App, SKeys[]>();
         }
 
-        public void Register(App window, Keys[] keys)
+        public void Register(App window, SKeys[] keys)
         {
             if (Map.ContainsKey(window))
             {
@@ -21,14 +21,14 @@ namespace Swincher.Core
             Map.Add(window, keys);
         }
 
-        public bool Focus(Keys[] keys)
+        public bool Focus(SKeys[] keys)
         {
-            foreach (KeyValuePair<App, Keys[]> pair in Map)
+            foreach (KeyValuePair<App, SKeys[]> pair in Map)
             {
                 App window = pair.Key;
-                List<Keys> keySignals = new List<Keys>(pair.Value);
+                List<SKeys> keySignals = new List<SKeys>(pair.Value);
 
-                foreach (Keys key in keys)
+                foreach (SKeys key in keys)
                 {
                     if (!keySignals.Contains(key))
                     {
