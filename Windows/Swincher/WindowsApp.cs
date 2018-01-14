@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
-using Swincher.Core;
+using Swincher.Core.Application;
 
 namespace Swincher
 {

@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using Newtonsoft.Json;
+using Swincher.Core.Application;
+using Swincher.Core.Key;
 using Swincher.Core.Properties;
 
-namespace Swincher.Core
+namespace Swincher.Core.Configuration
 {
     public class Config
     {

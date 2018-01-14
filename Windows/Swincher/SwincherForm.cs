@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Swincher.Core;
+using Swincher.Core.Configuration;
+using Swincher.Core.Key;
 
 namespace Swincher
 {

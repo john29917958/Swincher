@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace Swincher.Core
+namespace Swincher.Core.Application
 {
     public class AppBinding
     {

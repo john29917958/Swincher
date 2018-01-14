@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using Swincher.Core;
+using Swincher.Core.Key;
 
 namespace Swincher.Support
 {

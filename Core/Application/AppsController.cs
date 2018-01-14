@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Swincher.Core.Key;
 
-namespace Swincher.Core
+namespace Swincher.Core.Application
 {
     public class AppsController
     {

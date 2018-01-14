@@ -1,4 +1,4 @@
-﻿namespace Swincher.Core
+﻿namespace Swincher.Core.Key
 {
     public enum KeyCode
     {
