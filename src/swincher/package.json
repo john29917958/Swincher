@@ -1,28 +1,16 @@
 {
-  "name": "swincher",
-  "version": "1.0.0",
-  "description": "Easy window switching. Level ups your efficiency.",
-  "main": "main.js",
   "scripts": {
-  	"start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "build –win –ia32"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/john29917958/Swincher.git"
-  },
-  "keywords": [
-    "swincher",
-    "switch",
-    "window"
-  ],
-  "author": "Tzu-Chao, Wang",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/john29917958/Swincher/issues"
-  },
-  "homepage": "https://github.com/john29917958/Swincher#readme",
   "devDependencies": {
-    "electron": "1.7.10"
+    "electron": "^1.7.10",
+    "electron-builder": "^19.54.0"
+  },
+  "build": {
+    "appId": "swincher",
+    "win": {
+      "target": "nsis",
+      "arch": ["x64", "ia32"]
+    }
   }
 }
