@@ -4,6 +4,7 @@
   "description": "Easy window switching. Level ups your efficiency.",
   "main": "main.js",
   "scripts": {
+  	"start": "electron .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/john29917958/Swincher/issues"
   },
-  "homepage": "https://github.com/john29917958/Swincher#readme"
+  "homepage": "https://github.com/john29917958/Swincher#readme",
+  "devDependencies": {
+    "electron": "1.7.10"
+  }
 }
