@@ -1,7 +1,7 @@
 {
   "name": "swincher",
   "version": "1.0.0",
-  "description": "Easy window switching. Level ups your efficiency.\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Cs\u001b[C\u001b[D\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001b[3~\u001bEasy window switching. Levels up your efficiency.",
+  "description": "Easy window switching. Level ups your efficiency.",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
