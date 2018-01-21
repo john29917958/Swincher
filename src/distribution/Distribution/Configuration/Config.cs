@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using Swincher.Core.Application;
-using Swincher.Core.Key;
-using Swincher.Core.Properties;
+using Swincher.Distribution.Application;
+using Swincher.Distribution.Key;
+using Swincher.Distribution.Properties;
 
-namespace Swincher.Core.Configuration
+namespace Swincher.Distribution.Configuration
 {
     public class Config
     {

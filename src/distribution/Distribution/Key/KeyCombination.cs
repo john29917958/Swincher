@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Swincher.Core.Key
+namespace Swincher.Distribution.Key
 {
     public class KeyCombination
     {

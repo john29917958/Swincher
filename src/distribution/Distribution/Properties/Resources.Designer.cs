@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Swincher.Core.Properties {
+namespace Swincher.Distribution.Properties {
     using System;
     
     

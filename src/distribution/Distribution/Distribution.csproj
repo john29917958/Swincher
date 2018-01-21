@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Swincher.Core</RootNamespace>
-    <AssemblyName>Swincher.Core</AssemblyName>
+    <RootNamespace>Swincher.Distribution</RootNamespace>
+    <AssemblyName>Swincher.Distribution</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

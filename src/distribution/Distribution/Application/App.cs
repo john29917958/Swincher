@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace Swincher.Core.Application
+namespace Swincher.Distribution.Application
 {
     public abstract class App
     {

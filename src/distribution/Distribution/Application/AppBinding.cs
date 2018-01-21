@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using Newtonsoft.Json;
 
-namespace Swincher.Core.Application
+namespace Swincher.Distribution.Application
 {
     public class AppBinding
     {
