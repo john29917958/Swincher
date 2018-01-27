@@ -8,12 +8,31 @@
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css">    
   </head>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-
+    <nav>
+      <div class="nav-wrapper">
+        <a href="#!" class="brand-logo">Swincher</a>
+        <ul class="right">
+          <li><a class="disabled" href="#!">EN</a></li>
+          <li><a href="#!"><i class="material-icons">settings</i></a></li>
+          <li><a class="disabled" href="#!"><i class="material-icons">account_circle</i></a></li>
+        </ul>
+      </div>
+    </nav>
+    <form class="row">
+      <div class="file-field input-field col s6">
+        <div class="btn">
+          <i class="material-icons">folder</i>
+          <input type="file">
+        </div>
+        <div class="file-path-wrapper">
+          <input class="file-path validate" type="text" placeholder="Program executable path">
+        </div>
+      </div>
+      
+      <div class="input-field col s6">
+        <input type="text" name="shortcut" placeholder="Shortcut keys">
+      </div>
+    </form>
     <script>
       // You can also require other files to run in this process
       require('./renderer.js');
