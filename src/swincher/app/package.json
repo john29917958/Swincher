@@ -25,5 +25,8 @@
   "devDependencies": {
     "electron": "^1.7.10"
   },
-  "dependencies": {}
+  "dependencies": {
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.3.1"
+  }
 }
