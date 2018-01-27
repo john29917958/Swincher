@@ -23,10 +23,13 @@
   },
   "homepage": "https://github.com/john29917958/Swincher#readme",
   "devDependencies": {
-    "electron": "^1.7.10"
+    "electron": "^1.7.10",
+    "electron-prebuilt-compile": "^1.7.11"
   },
   "dependencies": {
     "hammerjs": "^2.0.8",
-    "jquery": "^3.3.1"
+    "jquery": "^3.3.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
