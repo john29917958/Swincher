@@ -1,0 +1,17 @@
+{
+  "scripts": {
+    "build": "build --win --ia32"
+  },
+  "devDependencies": {
+    "electron": "^1.7.10",
+    "electron-builder": "^19.54.0"
+  },
+  "build": {
+    "appId": "swincher",
+    "win": {
+      "target": "msi",
+      "publisherName": "Tzu-Chao, Wang",
+      "icon": "build-resources/icon.ico"
+    }
+  }
+}
