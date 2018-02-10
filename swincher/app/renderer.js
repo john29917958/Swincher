@@ -7,8 +7,14 @@ require('hammerjs');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import Home from 'containers/home/Home';
+
+import NavigationBar from './components/NavigationBar';
 import Home from './containers/home/Home';
+
+ReactDOM.render(
+  <NavigationBar />,
+  document.getElementById('navigation-bar')
+);
 
 ReactDOM.render(
   <Home />,
