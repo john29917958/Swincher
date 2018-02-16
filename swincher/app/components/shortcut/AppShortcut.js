@@ -4,17 +4,32 @@ import React, { Component } from 'react';
 import Shortcut from './Shortcut';
 
 export default class AppShortcut extends Component {
-  onChange(e) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      path: this.props.path ? this.props.path : ''
+    };
+  }
+
+  onUpdateProgramPath(e) {
     if (this.props.create) {
-      console.log('do nothing');
+      this.setState({ path: e.target.files[0].path });
     }
     else {
-      console.log('should update file path');
+      this.props.actions.updateAppShortcut(this.props.id, e.target.files[0].path, this.props.shortcut);
+    }
+  }
+
+  onSubmit(shortcut) {
+    if (this.props.create) {
+      this.props.actions.addAppShortcut(this.state.path, shortcut);
+    }
+    else {
+      this.props.actions.updateAppShortcut(this.props.id, this.props.path, shortcut);
     }
   }
 
   render() {
-    console.dir(this.props);
     var programPath = this.props.path,
         programName = '';
 
@@ -28,7 +43,7 @@ export default class AppShortcut extends Component {
         <div className="file-field input-field col s6">
           <div className="btn">
             <i className="material-icons">folder</i>
-            <input type="file" defaultValue={this.props.path ? this.props.path : ''} onChange={this.onChange.bind(this)} />
+            <input type="file" defaultValue={this.state.path} onChange={this.onUpdateProgramPath.bind(this)} />
           </div>
           <div className="file-path-wrapper">
             <input className="file-path validate" type="text" placeholder="Program" defaultValue={this.props.path ? programName : ''} />
@@ -36,7 +51,7 @@ export default class AppShortcut extends Component {
         </div>
         
         <div className="input-field col s6">
-          <Shortcut shortcut={this.props.shortcut ? this.props.shortcut : ''} />
+          <Shortcut id={this.props.id} create={this.props.create} shortcut={this.props.shortcut ? this.props.shortcut : ''} action={this.onSubmit.bind(this)} />
         </div>
       </form>
     );

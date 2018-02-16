@@ -5,11 +5,12 @@ import AppShortcut from './AppShortcut';
 
 export default class AppShortcuts extends Component {
   render() {
-    var appShortcutItems = this.props.appShortcuts.map(function (appShortcut) {
-      return (
-        <AppShortcut key={appShortcut.id} create={false} path={appShortcut.path} shortcut={appShortcut.shortcut} actions={appShortcut.actions} />
-      );
-    });
+    var self = this,
+        appShortcutItems = this.props.appShortcuts.map(function (appShortcut) {
+          return (
+            <AppShortcut key={appShortcut.id} create={false} id={appShortcut.id} path={appShortcut.path} shortcut={appShortcut.shortcut} actions={self.props.actions} />
+          );
+        });
 
     return (
       <div>

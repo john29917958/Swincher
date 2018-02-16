@@ -4,7 +4,9 @@ import React, { Component } from 'react';
 
 export default class Shortcut extends Component {
   onSubmit(e) {
-    console.log('hi');
+    if (e.keyCode === 13) {
+      this.props.action(e.target.value);
+    }
   }
   
   render() {

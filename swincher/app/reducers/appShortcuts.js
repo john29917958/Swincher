@@ -9,16 +9,21 @@ export default function appShortcuts(state = initialState, action) {
   switch (action.type) {
     case ADD_APP_SHORTCUT:
       let id = state.reduce(function (maxId, appShortcuts) {
-        Math.max(appShortcuts.id, maxId)
+        return Math.max(appShortcuts.id, maxId);
       }, -1) + 1;
-
-      return state.set(id, new AppShortcut({
-        id,
-        path: action.path,
-        shortcut: action.shortcut
-      }));
+      
+      state.push(
+        {
+          id: id,
+          path: action.path,
+          shortcut: action.shortcut  
+        }
+      );
+      
+      return state.slice(0, state.length);
     case UPDATE_APP_SHORTCUT:
-      return state.setIn([action.id, 'path', 'shortcut'], action.path, action.shortcut);
+      console.log("UPDATE!!");
+      state.setIn([action.id, 'path', 'shortcut'], action.path, action.shortcut);
     case DELETE_APP_SHORTCUT:
       return state.delete(action.id);
     default:
