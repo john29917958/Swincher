@@ -13,7 +13,7 @@ export default function appShortcuts(state = initialState, action) {
       }, -1) + 1;
 
       state.push(AppShortcut.create(id, action.path, action.shortcut));
-      
+
       return state.slice(0, state.length);
     case UPDATE_APP_SHORTCUT:
       return state.map(function (appShortcut) {

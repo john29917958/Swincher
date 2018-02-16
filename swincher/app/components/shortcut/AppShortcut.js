@@ -1,6 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
+import classNames from 'classnames';
 import Shortcut from './Shortcut';
 
 export default class AppShortcut extends Component {
@@ -29,18 +30,38 @@ export default class AppShortcut extends Component {
     }
   }
 
+  onDelete(e) {
+    this.props.actions.deleteAppShortcut(this.props.id);
+  }
+
   render() {
     var programPath = this.props.path,
-        programName = '';
+        programName = '',
+        deleteButton = null,
+        filePathInputClass = classNames({
+          'file-field input-field col': true,
+          's9': this.props.create,
+          's8': !this.props.create
+        });
 
     if (programPath) {
       programName = programPath.split('\\');
       programName = programName.length > 0 ? programName[programName.length - 1] : '';
     }
 
+    if (!this.props.create) {
+      deleteButton = (
+        <div className="input-field col s1">
+          <button className="waves-effect waves-light btn" type="button" onClick={this.onDelete.bind(this)}>
+            <i className="material-icons">delete</i>
+          </button>
+        </div>
+      );
+    }
+
     return (
-      <form className="row">
-        <div className="file-field input-field col s6">
+      <div className="row">
+        <div className={filePathInputClass}>
           <div className="btn">
             <i className="material-icons">folder</i>
             <input type="file" defaultValue={this.state.path} onChange={this.onUpdateProgramPath.bind(this)} />
@@ -50,10 +71,12 @@ export default class AppShortcut extends Component {
           </div>
         </div>
         
-        <div className="input-field col s6">
+        <div className="input-field col s3">
           <Shortcut id={this.props.id} create={this.props.create} shortcut={this.props.shortcut} action={this.onSubmit.bind(this)} />
         </div>
-      </form>
+
+        {deleteButton}
+      </div>
     );
   }
 }

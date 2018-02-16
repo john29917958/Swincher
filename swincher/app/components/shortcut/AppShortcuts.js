@@ -13,10 +13,10 @@ export default class AppShortcuts extends Component {
         });
 
     return (
-      <div>
+      <form>
         <AppShortcut create={true} actions={this.props.actions} />
         {appShortcutItems}
-      </div>
+      </form>
     );
   }
 }

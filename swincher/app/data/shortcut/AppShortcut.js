@@ -14,11 +14,12 @@ const AppShortcut = {
   },
 
   create: function (id, path, shortcut) {
-    this.id = id;
-    this.path = path;
-    this.shortcut = shortcut;
+    var newAppShortcut = Object.create(this);
+    newAppShortcut.id = id;
+    newAppShortcut.path = path;
+    newAppShortcut.shortcut = shortcut;
 
-    return this;
+    return newAppShortcut;
   }
 };
 
