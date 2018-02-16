@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import AppShortcuts from './shortcut/AppShortcuts';
 import NavigationBar from './NavigationBar';
 
-class WorkSpace extends Component { 
+class WorkSpace extends Component {
   render() {
     return (
       <div>
-        <AppShortcuts />
+        <AppShortcuts appShortcuts={this.props.appShortcuts} actions={this.props.actions} />
       </div>
     );
   }
