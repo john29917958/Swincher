@@ -41,7 +41,7 @@ function getInitialState() {
     metaKey: false, // Win or Command key
     keyCode: -1
   };
-
+  
   return {
     keyData: keyData,
     pressedKeys: [],
@@ -94,7 +94,6 @@ export default class Shortcut extends Component {
   updateShortcut() {
     if (!this.props.create) {
       this.props.action(this.state.keyData);
-      this.setState(getInitialState.apply(this));
     }
   }
 
