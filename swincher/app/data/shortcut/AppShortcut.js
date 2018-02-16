@@ -1,6 +1,6 @@
 'use strict';
 
-const AppShortcut = {
+const template = {
   id: '',
   
   path: '',
@@ -11,10 +11,12 @@ const AppShortcut = {
     ctrlKey: false,
     metaKey: false, // Win or Command key
     keyCode: -1
-  },
+  }
+};
 
+const AppShortcut = {
   create: function (id, path, shortcut) {
-    var newAppShortcut = Object.create(this);
+    var newAppShortcut = Object.create(template);
     newAppShortcut.id = id;
     newAppShortcut.path = path;
     newAppShortcut.shortcut = shortcut;
