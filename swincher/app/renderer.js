@@ -9,16 +9,16 @@ require('hammerjs');
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import reducer from './reducers/rootReducer';
 
-import NavigationBar from './components/NavigationBar';
-import Home from './containers/home/Home';
-
-ReactDOM.render(
-  <NavigationBar />,
-  document.getElementById('navigation-bar')
-);
+const store = createStore(reducer);
 
 ReactDOM.render(
-  <Home />,
-  document.getElementById('home')
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
 );

@@ -1,0 +1,5 @@
+'use strict';
+
+export const ADD_APP_SHORTCUT = 'ADD_APP_SHORTCUT';
+export const UPDATE_APP_SHORTCUT = 'UPDATE_APP_SHORTCUT';
+export const DELETE_APP_SHORTCUT = 'DELEGE_APP_SHORTCUT';
