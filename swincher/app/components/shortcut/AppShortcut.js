@@ -41,7 +41,7 @@ export default class AppShortcut extends Component {
         filePathInputClass = classNames({
           'file-field input-field col': true,
           's9': this.props.create,
-          's8': !this.props.create
+          's6 m7 l8': !this.props.create
         });
 
     if (programPath) {
@@ -51,8 +51,8 @@ export default class AppShortcut extends Component {
 
     if (!this.props.create) {
       deleteButton = (
-        <div className="input-field col s1">
-          <button className="waves-effect waves-light btn" type="button" onClick={this.onDelete.bind(this)}>
+        <div className="input-field col s3 m2 l1">
+          <button className="waves-effect waves-light btn right" type="button" onClick={this.onDelete.bind(this)}>
             <i className="material-icons">delete</i>
           </button>
         </div>
