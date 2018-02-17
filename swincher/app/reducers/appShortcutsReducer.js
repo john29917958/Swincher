@@ -1,9 +1,11 @@
 'use strict';
 
+const config = new (require('electron-config'))();
 import { ADD_APP_SHORTCUT, UPDATE_APP_SHORTCUT, DELETE_APP_SHORTCUT } from '../constants/ActionTypes';
 import AppShortcut from '../data/shortcut/AppShortcut';
+import * as ConfigEntries from '../constants/ConfigEntries';
 
-const initialState = [];
+const initialState = config.has(ConfigEntries.APP_SHORTCUT) ? config.get(ConfigEntries.APP_SHORTCUT) : [];
 
 export default function appShortcuts(state = initialState, action) {
   switch (action.type) {
@@ -13,10 +15,11 @@ export default function appShortcuts(state = initialState, action) {
       }, -1) + 1;
 
       state.push(AppShortcut.create(id, action.path, action.shortcut));
+      config.set(ConfigEntries.APP_SHORTCUT, state);
 
       return state.slice(0, state.length);
     case UPDATE_APP_SHORTCUT:
-      return state.map(function (appShortcut) {
+      state = state.map(function (appShortcut) {
         if (appShortcut.id === action.id) {
           appShortcut.path = action.path;
           appShortcut.shortcut = action.shortcut;
@@ -24,10 +27,18 @@ export default function appShortcuts(state = initialState, action) {
 
         return appShortcut;
       });
+
+      config.set(ConfigEntries.APP_SHORTCUT, state);
+
+      return state;
     case DELETE_APP_SHORTCUT:
-      return state.filter(function (appShortcut) {
+      state = state.filter(function (appShortcut) {
         return appShortcut.id !== action.id;
       });
+
+      config.set(ConfigEntries.APP_SHORTCUT, state);
+
+      return state;
     default:
       return state;
   }
