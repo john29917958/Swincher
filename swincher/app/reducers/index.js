@@ -1,10 +1,12 @@
 'use strict';
 
 import { combineReducers } from 'redux';
-import appShortcuts from './appShortcuts';
+import appShortcutsReducer from './appShortcutsReducer';
+import pageReducer from './pageReducer';
 
 const rootReducer = combineReducers({
-  appShortcuts: appShortcuts
+  appShortcuts: appShortcutsReducer,
+  page: pageReducer
 });
 
 export default rootReducer;

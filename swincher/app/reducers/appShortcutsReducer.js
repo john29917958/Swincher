@@ -1,6 +1,6 @@
 'use strict';
 
-import { ADD_APP_SHORTCUT, UPDATE_APP_SHORTCUT, DELETE_APP_SHORTCUT } from '../constants/AppShortcutActionTypes';
+import { ADD_APP_SHORTCUT, UPDATE_APP_SHORTCUT, DELETE_APP_SHORTCUT } from '../constants/ActionTypes';
 import AppShortcut from '../data/shortcut/AppShortcut';
 
 const initialState = [];

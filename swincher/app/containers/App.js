@@ -7,13 +7,16 @@ import { connect } from 'react-redux';
 import NavigationBar from '../components/NavigationBar';
 import WorkSpace from '../components/WorkSpace';
 import * as AppShortcutActions from '../actions/AppShortcutActions';
+import * as PageActions from '../actions/PageActions';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <NavigationBar />
-        <WorkSpace appShortcuts={ this.props.appShortcuts } actions={ this.props.actions } />
+        <NavigationBar page={ this.props.page } actions={ this.props.pageActions } />
+        <div className='container'>
+          <WorkSpace page={ this.props.page } appShortcuts={ this.props.appShortcuts } actions={ this.props.appShortcutActions } />
+        </div>
       </div>
     );
   }
@@ -21,18 +24,22 @@ class App extends Component {
 
 App.propTypes = {
   appShortcuts: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  appShortcutActions: PropTypes.object.isRequired,
+  page: PropTypes.string.isRequired,
+  pageActions: PropTypes.object.isRequired
 };
 
 const mapStateToProps = function (state) {
   return {
-    appShortcuts: state.appShortcuts
+    appShortcuts: state.appShortcuts,
+    page: state.page
   };
 }
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    actions: bindActionCreators(AppShortcutActions, dispatch)
+    appShortcutActions: bindActionCreators(AppShortcutActions, dispatch),
+    pageActions: bindActionCreators(PageActions, dispatch)
   };  
 }
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import *  as types from '../constants/AppShortcutActionTypes';
+import * as types from '../constants/ActionTypes';
 
 export const addAppShortcut = function (path, shortcut) {
   return {
