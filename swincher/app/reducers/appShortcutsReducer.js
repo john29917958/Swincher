@@ -1,9 +1,10 @@
 'use strict';
 
 const config = new (require('electron-config'))();
-import { ADD_APP_SHORTCUT, UPDATE_APP_SHORTCUT, DELETE_APP_SHORTCUT } from '../constants/ActionTypes';
+import { ADD_APP_SHORTCUT, UPDATE_APP_SHORTCUT, DELETE_APP_SHORTCUT, ACTIVATE, DEACTIVATE } from '../constants/ActionTypes';
 import AppShortcut from '../data/shortcut/AppShortcut';
 import * as ConfigEntries from '../constants/ConfigEntries';
+import Hooker from '../hook/Hooker';
 
 const initialState = config.has(ConfigEntries.APP_SHORTCUT) ? config.get(ConfigEntries.APP_SHORTCUT) : [];
 
@@ -38,6 +39,12 @@ export default function appShortcuts(state = initialState, action) {
 
       config.set(ConfigEntries.APP_SHORTCUT, state);
 
+      return state;
+    case ACTIVATE:
+      Hooker.hook(state);
+      return state;
+    case DEACTIVATE:
+      Hooker.unhook();
       return state;
     default:
       return state;
