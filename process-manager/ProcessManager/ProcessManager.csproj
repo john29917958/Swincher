@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>Swincher.Distribution</RootNamespace>
-    <AssemblyName>Swincher.Distribution</AssemblyName>
+    <RootNamespace>Swincher.ProcessManager</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <Reference Include="Microsoft.CSharp">
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7\Microsoft.CSharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,5 +25,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy /y/i/r &quot;$(OutDir)*.*&quot; &quot;$(SolutionDir)..\swincher\app\process-manager&quot;" />
+  </Target>
 
 </Project>

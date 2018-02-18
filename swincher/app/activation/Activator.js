@@ -1,8 +1,11 @@
 'use strict';
 
 const { globalShortcut } = require('electron').remote;
-const ps = require('ps-node');
+import path from 'path';
+import { exec } from 'child_process';
+import ps from 'ps-node';
 import keycode from 'keycode';
+import edge from 'electron-edge-js';
 
 function getShortcutString(shortcut) {
   var shortcutString = '';
@@ -37,33 +40,45 @@ function getShortcutString(shortcut) {
 }
 
 function bringToFront(programPath) {
-  var processName = '';
-
-  processName = programPath.split('\\');
-  processName = processName.length > 0 ? processName[processName.length - 1] : processName;
-
+  var processName = path.basename(programPath),
+      programDir = path.dirname(programPath),
+      BringToFront = edge.func({
+        assemblyFile: 'process-manager/ProcessManager.dll',
+        typeName: 'Swincher.ProcessManager.Startup'
+      });
+  
   ps.lookup({
     command: processName
   }, function (err, list) {
-    var process;
-
     if (err) {
       throw new Error(err);
     }
     
-    if (list.length === 0) {
-      return;
+    if (!list || list.length === 0) {
+      // Windows support only now...
+      let command = 'cmd.exe /C start "" /d "{0}" "{1}"';
+      command = command.replace('{0}', programDir).replace('{1}', processName);
+      exec(command, function (err, stdout, stderr) {
+        if (err) {
+          throw new Error(err);
+        }
+      });
     }
-
-    process = list[0];
-    if (process) {
-      console.log(process.pid, process.command, process.arguments);
+    else {
+      BringToFront({
+        distribution: 'Windows',
+        pid: list[0].pid // Only support single app instance now.
+      }, function (error, result) {
+        if (error) {
+          throw new Error(error);
+        }
+      });
     }
   });
 }
 
-const Hooker = {
-  hook: function (appShortcuts) {
+const Activator = {
+  activate: function (appShortcuts) {
     appShortcuts.forEach(function (appShortcut) {
       var shortcut = getShortcutString(appShortcut.shortcut);
       
@@ -75,7 +90,7 @@ const Hooker = {
     });
   },
 
-  unhook: function (appShortcuts = null) {
+  deactivate: function (appShortcuts = null) {
     if (appShortcuts) {
       appShortcuts.forEach(function (appShortcut) {
         var shortcut = getShortcutString(appShortcut.shortcut);
@@ -91,4 +106,4 @@ const Hooker = {
   }
 }
 
-export default Hooker;
+export default Activator;
