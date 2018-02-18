@@ -1,7 +1,10 @@
 'use strict';
 
+export const SWITCH_PAGE = 'SWITCH_PAGE';
+
+export const ACTIVATE = 'ACTIVATE';
+export const DEACTIVATE = 'DEACTIVATE';
+
 export const ADD_APP_SHORTCUT = 'ADD_APP_SHORTCUT';
 export const UPDATE_APP_SHORTCUT = 'UPDATE_APP_SHORTCUT';
 export const DELETE_APP_SHORTCUT = 'DELEGE_APP_SHORTCUT';
-
-export const SWITCH_PAGE = 'SWITCH_PAGE';

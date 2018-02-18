@@ -6,16 +6,21 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import NavigationBar from '../components/NavigationBar';
 import WorkSpace from '../components/WorkSpace';
-import * as AppShortcutActions from '../actions/AppShortcutActions';
 import * as PageActions from '../actions/PageActions';
+import * as ActivationActions from '../actions/ActivationActions';
+import * as AppShortcutActions from '../actions/AppShortcutActions';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <NavigationBar page={ this.props.page } actions={ this.props.pageActions } />
+        <NavigationBar activation={ this.props.activation } page={ this.props.page } actions={ this.props.pageActions } />
         <div className='container'>
-          <WorkSpace page={ this.props.page } appShortcuts={ this.props.appShortcuts } actions={ this.props.appShortcutActions } />
+          <WorkSpace activation={ this.props.activation }
+            page={ this.props.page }
+            appShortcuts={ this.props.appShortcuts }
+            activationActions={ this.props.activationActions }
+            actions={ this.props.appShortcutActions } />
         </div>
       </div>
     );
@@ -26,21 +31,25 @@ App.propTypes = {
   appShortcuts: PropTypes.array.isRequired,
   appShortcutActions: PropTypes.object.isRequired,
   page: PropTypes.string.isRequired,
-  pageActions: PropTypes.object.isRequired
+  pageActions: PropTypes.object.isRequired,
+  activation: PropTypes.string.isRequired,
+  activationActions: PropTypes.object.isRequired
 };
 
 const mapStateToProps = function (state) {
   return {
-    appShortcuts: state.appShortcuts,
-    page: state.page
+    page: state.page,
+    activation: state.activation,
+    appShortcuts: state.appShortcuts
   };
 }
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    appShortcutActions: bindActionCreators(AppShortcutActions, dispatch),
-    pageActions: bindActionCreators(PageActions, dispatch)
-  };  
+    pageActions: bindActionCreators(PageActions, dispatch),
+    activationActions: bindActionCreators(ActivationActions, dispatch),
+    appShortcutActions: bindActionCreators(AppShortcutActions, dispatch)
+  };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
