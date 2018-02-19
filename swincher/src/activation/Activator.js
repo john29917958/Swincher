@@ -61,7 +61,9 @@ function bringToFront(programPath) {
     }
     else {
       execFile('dependencies\\WinWindowBringer.exe', [list[0].pid], function (error, stdout, stderr) {
-        throw new Error(err);
+        if (err) {
+          throw new Error(err);
+        }
       });
     }
   });
