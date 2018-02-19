@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import Shortcut from './Shortcut';
+import Theme from '../../theme/Theme';
 
 export default class AppShortcut extends Component {
   constructor(props) {
@@ -52,7 +53,7 @@ export default class AppShortcut extends Component {
     if (!this.props.create) {
       deleteButton = (
         <div className="input-field col s3 m2 l1">
-          <button className="waves-effect waves-light btn right" type="button" onClick={this.onDelete.bind(this)}>
+          <button className={ Theme.primaryButton + " right" } type="button" onClick={this.onDelete.bind(this)}>
             <i className="material-icons">delete</i>
           </button>
         </div>
@@ -62,7 +63,7 @@ export default class AppShortcut extends Component {
     return (
       <div className="row">
         <div className={filePathInputClass}>
-          <div className="btn">
+          <div className={ Theme.primaryButton }>
             <i className="material-icons">folder</i>
             <input type="file" defaultValue={this.state.path} onChange={this.onUpdateProgramPath.bind(this)} />
           </div>
