@@ -2,10 +2,9 @@
 
 const { globalShortcut } = require('electron').remote;
 import path from 'path';
-import { exec } from 'child_process';
+import { exec, execFile } from 'child_process';
 import ps from 'ps-node';
 import keycode from 'keycode';
-//import edge from 'electron-edge-js';
 
 function getShortcutString(shortcut) {
   var shortcutString = '';
@@ -41,11 +40,7 @@ function getShortcutString(shortcut) {
 
 function bringToFront(programPath) {
   var processName = path.basename(programPath),
-      programDir = path.dirname(programPath)/*,
-      BringToFront = edge.func({
-        assemblyFile: 'process-manager/ProcessManager.dll',
-        typeName: 'Swincher.ProcessManager.Startup'
-      });*/
+      programDir = path.dirname(programPath);
   
   ps.lookup({
     command: processName
@@ -65,16 +60,9 @@ function bringToFront(programPath) {
       });
     }
     else {
-      /*
-      BringToFront({
-        distribution: 'Windows',
-        pid: list[0].pid // Only support single app instance now.
-      }, function (error, result) {
-        if (error) {
-          throw new Error(error);
-        }
+      execFile('dependencies\\WinWindowBringer.exe', [list[0].pid], function (error, stdout, stderr) {
+        throw new Error(err);
       });
-      */
     }
   });
 }

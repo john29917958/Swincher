@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace ProcessManager.Test.Windows
+namespace Swincher.WinWindowBringer.Test
 {
     [TestClass]
     public class StartupTest
@@ -45,14 +44,12 @@ namespace ProcessManager.Test.Windows
         [TestMethod]
         public void TestBringToFront()
         {
-            Process p = Process.Start("cmd.exe");
-            Dictionary<string, object> d = new Dictionary<string, object>
+            Process p = Process.Start(new ProcessStartInfo
             {
-                {"distribution", "Windows"},
-                {"pid", p.Id}
-            };
-            dynamic payload = d;
-            new Swincher.ProcessManager.Startup().Invoke(payload);
+                FileName = "cmd.exe",
+                WindowStyle = ProcessWindowStyle.Minimized
+            });
+            Program.BringToFront(p.Id);
 
             Windowplacement placement = new Windowplacement();
             GetWindowPlacement(p.MainWindowHandle, ref placement);

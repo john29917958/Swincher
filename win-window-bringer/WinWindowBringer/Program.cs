@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 
-namespace Swincher.ProcessManager
+[assembly: InternalsVisibleTo("WinWindowBringer.Test")]
+
+namespace Swincher.WinWindowBringer
 {
-    public class Startup
+    class Program
     {
         private enum ShowWindowEnum
         {
@@ -27,11 +28,30 @@ namespace Swincher.ProcessManager
             public System.Drawing.Rectangle rcNormalPosition;
         }
 
-        public async Task<object> Invoke(dynamic input)
+        static int Main(string[] args)
         {
-            IDictionary<string, object> data = input;
-            int pid = Convert.ToInt32(data["pid"]);
+            if (args.Length == 0)
+            {
+                Console.WriteLine("PID should be provided");
+                return 1;
+            }
 
+            try
+            {
+                int pid = Convert.ToInt32(args[0]);
+                BringToFront(pid);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return 1;
+            }
+
+            return 0;
+        }
+
+        internal static void BringToFront(int pid)
+        {
             Process process = Process.GetProcessById(pid);
 
             Windowplacement placement = new Windowplacement();
@@ -45,8 +65,6 @@ namespace Swincher.ProcessManager
             }
 
             SetForegroundWindow(process.MainWindowHandle);
-
-            return 0;
         }
 
         [DllImport("USER32.DLL")]

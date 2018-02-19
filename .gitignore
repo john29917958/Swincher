@@ -133,3 +133,6 @@ typings/
 /vendor/python_26/
 SHASUMS256.txt
 **/package-lock.json
+
+# custom
+swincher/dependencies

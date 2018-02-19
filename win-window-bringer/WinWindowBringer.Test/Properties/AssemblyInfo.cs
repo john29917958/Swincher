@@ -3,11 +3,11 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("ProcessManager.Test")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Unit test for WinWindowBringer.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Tzu-Chao Wang")]
 [assembly: AssemblyProduct("ProcessManager.Test")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
+[assembly: AssemblyCopyright("Copyright © 2018 Tzu-Chao Wang all rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
