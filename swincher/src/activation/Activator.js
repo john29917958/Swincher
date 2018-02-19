@@ -3,7 +3,7 @@
 const { globalShortcut } = require('electron').remote;
 import path from 'path';
 import { exec, execFile } from 'child_process';
-import ps from 'ps-node';
+import find from 'find-process';
 import keycode from 'keycode';
 
 function getShortcutString(shortcut) {
@@ -42,27 +42,21 @@ function bringToFront(programPath) {
   var processName = path.basename(programPath),
       programDir = path.dirname(programPath);
   
-  ps.lookup({
-    command: processName
-  }, function (err, list) {
-    if (err) {
-      throw new Error(err);
-    }
-    
+  find('name', processName).then(function (list) {
     if (!list || list.length === 0) {
       // Windows support only now...
       let command = 'cmd.exe /C start "" /d "{0}" "{1}"';
       command = command.replace('{0}', programDir).replace('{1}', processName);
-      exec(command, function (err, stdout, stderr) {
-        if (err) {
-          throw new Error(err);
+      exec(command, function (error, stdout, stderr) {
+        if (error) {
+          throw new Error(error);
         }
       });
     }
     else {
       execFile('dependencies\\WinWindowBringer.exe', [list[0].pid], function (error, stdout, stderr) {
-        if (err) {
-          throw new Error(err);
+        if (error) {
+          throw new Error(error);
         }
       });
     }
