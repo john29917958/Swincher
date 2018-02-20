@@ -53,7 +53,7 @@ export default class AppShortcut extends Component {
     if (!this.props.create) {
       deleteButton = (
         <div className="input-field col s3 m2 l1">
-          <button className={ Theme.primaryButton + " right" } type="button" onClick={this.onDelete.bind(this)}>
+          <button className={ Theme.primaryButton + " right" } type="button" onClick={ this.onDelete.bind(this) }>
             <i className="material-icons">delete</i>
           </button>
         </div>
@@ -62,18 +62,18 @@ export default class AppShortcut extends Component {
 
     return (
       <div className="row">
-        <div className={filePathInputClass}>
+        <div className={ filePathInputClass }>
           <div className={ Theme.primaryButton }>
             <i className="material-icons">folder</i>
-            <input type="file" defaultValue={this.state.path} onChange={this.onUpdateProgramPath.bind(this)} />
+            <input type="file" defaultValue={ this.state.path } onChange={ this.onUpdateProgramPath.bind(this) } />
           </div>
           <div className="file-path-wrapper">
-            <input className="file-path validate" type="text" placeholder="Program" defaultValue={this.props.path ? programName : ''} />
+            <input className="file-path" type="text" placeholder="Program" defaultValue={ this.props.path ? programName : '' } readOnly />
           </div>
         </div>
         
         <div className="input-field col s3">
-          <Shortcut id={this.props.id} create={this.props.create} shortcut={this.props.shortcut} action={this.onSubmit.bind(this)} />
+          <Shortcut id={ this.props.id } create={ this.props.create } shortcut={ this.props.shortcut } action={ this.onSubmit.bind(this) } />
         </div>
 
         {deleteButton}
