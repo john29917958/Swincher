@@ -1,7 +1,6 @@
 'use strict';
 
 import { combineReducers } from 'redux';
-import pageReducer from './pageReducer';
 import activationReducer from './activationReducer';
 import appShortcutsReducer from './appShortcutsReducer';
 
@@ -11,7 +10,6 @@ import appShortcutsReducer from './appShortcutsReducer';
 // state.activation => activationReducer
 // and so on...
 const rootReducer = combineReducers({
-  page: pageReducer,
   activation: activationReducer,
   appShortcuts: appShortcutsReducer
 });

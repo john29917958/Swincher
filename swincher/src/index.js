@@ -19,8 +19,10 @@ function createWindow () {
     width: 800,
     height: 600,
     title: 'Swincher',
+    titleBarStyle: 'hiddenInset',
+    frame: false,
     icon: './favicon.ico',
-    minWidth: 500,
+    minWidth: 400,
     minHeight: 400
   });
 

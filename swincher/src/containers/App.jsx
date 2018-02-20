@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import NavigationBar from '../components/NavigationBar';
 import WorkSpace from '../components/WorkSpace';
-import * as PageActions from '../actions/PageActions';
 import * as ActivationActions from '../actions/ActivationActions';
 import * as AppShortcutActions from '../actions/AppShortcutActions';
 
@@ -14,8 +13,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavigationBar activation={ this.props.activation } page={ this.props.page } actions={ this.props.pageActions } />
-        <div className='container'>
+        <NavigationBar activation={ this.props.activation } />
+        <div id='page-container' className='container'>
           <WorkSpace activation={ this.props.activation }
             page={ this.props.page }
             appShortcuts={ this.props.appShortcuts }
@@ -30,15 +29,12 @@ class App extends Component {
 App.propTypes = {
   appShortcuts: PropTypes.array.isRequired,
   appShortcutActions: PropTypes.object.isRequired,
-  page: PropTypes.string.isRequired,
-  pageActions: PropTypes.object.isRequired,
   activation: PropTypes.string.isRequired,
   activationActions: PropTypes.object.isRequired
 };
 
 const mapStateToProps = function (state) {
   return {
-    page: state.page,
     activation: state.activation,
     appShortcuts: state.appShortcuts
   };
@@ -46,7 +42,6 @@ const mapStateToProps = function (state) {
 
 const mapDispatchToProps = function (dispatch) {
   return {
-    pageActions: bindActionCreators(PageActions, dispatch),
     activationActions: bindActionCreators(ActivationActions, dispatch),
     appShortcutActions: bindActionCreators(AppShortcutActions, dispatch)
   };

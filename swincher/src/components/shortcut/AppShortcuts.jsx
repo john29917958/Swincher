@@ -13,7 +13,7 @@ export default class AppShortcuts extends Component {
         });
 
     return (
-      <form>
+      <form id="app-shortcuts-page">
         <AppShortcut create={true} actions={this.props.actions} />
         {appShortcutItems}
       </form>
