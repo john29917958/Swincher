@@ -1,0 +1,102 @@
+{
+  "name": "swincher",
+  "productName": "Swincher",
+  "version": "1.0.0",
+  "description": "Easy window switching. Level ups your efficiency.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "postpublish": "cpx dependencies/*.* ",
+    "lint": "eslint --cache --color --ext .jsx,.js src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john29917958/Swincher.git"
+  },
+  "keywords": [
+    "swincher",
+    "switch",
+    "window"
+  ],
+  "author": "Tzu-Chao Wang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/john29917958/Swincher/issues"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "zip"
+        ],
+        "linux": [
+          "deb",
+          "rpm"
+        ]
+      },
+      "electronPackagerConfig": {
+        "packageManager": "npm",
+        "arch": "all",
+        "afterExtract": [
+          "./build-scripts/include-dependencies.js"
+        ],
+        "overwrite": true,
+        "icon": "src/favicon.ico"
+      },
+      "electronWinstallerConfig": {
+        "name": "swincher",
+        "exe": "Swincher.exe",
+        "version": "1.0.0",
+        "description": "Easy window switching. Level ups your efficiency."
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "Tzu-Chao Wang",
+        "name": "Swincher"
+      },
+      "windowsStoreConfig": {
+        "packageName": "Swincher",
+        "name": "swincher"
+      }
+    }
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "electron-compile": "^6.4.2",
+    "electron-config": "^1.0.0",
+    "electron-devtools-installer": "^2.2.3",
+    "electron-squirrel-startup": "^1.0.0",
+    "find-process": "^1.1.0",
+    "fs-extra": "^5.0.0",
+    "hammerjs": "^2.0.8",
+    "jquery": "^3.3.1",
+    "keycode": "^2.1.9",
+    "prop-types": "^15.6.0",
+    "ps-node": "^0.1.6",
+    "react": "^15.6.2",
+    "react-dom": "^15.6.2",
+    "react-hot-loader": "^3.1.3",
+    "react-redux": "^5.0.7",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^5.1.1",
+    "electron-prebuilt-compile": "1.8.2",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.6.1"
+  }
+}

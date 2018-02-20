@@ -1,0 +1,61 @@
+#title-bar {
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
+}
+
+#title-bar .brand-logo {
+  left: 15px;
+}
+
+#title-bar #navbar-resizer {
+  height: 2px;
+  width: 100%;
+  -webkit-app-region: no-drag;
+}
+
+#title-bar .tabs {
+  width: auto;
+}
+
+#title-bar #preferences,
+#title-bar #preferences * {
+  height: 48px;
+  line-height: 48px;
+}
+
+#title-bar li,
+#title-bar a {
+  -webkit-app-region: no-drag;
+}
+
+#title-bar #resize-button * {
+  height: 56px;
+  line-height: 56px;
+}
+
+@media only screen and (min-width: 601px) {
+  #title-bar #resize-button * {
+    height: 64px;
+    line-height: 64px;
+  }
+}
+
+#page-container {
+  padding-top: 60px;
+}
+
+#brand-logo.deactivated {
+  color: ;
+}
+
+.waves-effect.waves-primary .waves-ripple {
+  background-color: rgba(0, 176, 255, 0.65);
+}
+
+.container {
+  width: 90%;
+}
+
+.unselectable {
+  -webkit-user-select: none;
+}
