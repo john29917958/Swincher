@@ -25,9 +25,18 @@ export default class AppShortcut extends Component {
   onSubmit(shortcut) {
     if (this.props.create) {
       this.props.actions.addAppShortcut(this.state.path, shortcut);
+      this.refs.fileInput.value = '';
+      this.refs.filePathInput.value = '';
     }
     else {
       this.props.actions.updateAppShortcut(this.props.id, this.props.path, shortcut);
+    }
+  }
+
+  onCancel() {
+    if (this.props.create) {
+      this.refs.fileInput.value = '';
+      this.refs.filePathInput.value = '';
     }
   }
 
@@ -65,15 +74,15 @@ export default class AppShortcut extends Component {
         <div className={ filePathInputClass }>
           <div className={ Theme.primaryButton }>
             <i className="material-icons">folder</i>
-            <input type="file" defaultValue={ this.state.path } onChange={ this.onUpdateProgramPath.bind(this) } />
+            <input ref="fileInput" type="file" defaultValue={ this.state.path } onChange={ this.onUpdateProgramPath.bind(this) } />
           </div>
           <div className="file-path-wrapper">
-            <input className="file-path" type="text" placeholder="Program" defaultValue={ this.props.path ? programName : '' } readOnly />
+            <input ref="filePathInput" className="file-path" type="text" placeholder="Program" defaultValue={ this.props.path ? programName : '' } readOnly />
           </div>
         </div>
         
         <div className="input-field col s3">
-          <Shortcut id={ this.props.id } create={ this.props.create } shortcut={ this.props.shortcut } action={ this.onSubmit.bind(this) } />
+          <Shortcut id={ this.props.id } create={ this.props.create } shortcut={ this.props.shortcut } action={ this.onSubmit.bind(this) } onCancel={ this.onCancel.bind(this) } />
         </div>
 
         {deleteButton}

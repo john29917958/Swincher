@@ -73,6 +73,10 @@ export default class Shortcut extends Component {
       this.setState(getInitialState.apply(this));
     }
     else if (e.keyCode === 27) { // Escape
+      if (this.props.onCancel && typeof this.props.onCancel === 'function') {
+        this.props.onCancel.call(this);
+      }
+      
       this.setState(getInitialState.apply(this));
     }
     else {
