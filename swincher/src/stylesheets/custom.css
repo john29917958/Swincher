@@ -40,9 +40,12 @@
   }
 }
 
-
 #page-container {
   padding-top: 60px;
+}
+
+#brand-logo.deactivated {
+  color: ;
 }
 
 .waves-effect.waves-primary .waves-ripple {
@@ -51,4 +54,8 @@
 
 .container {
   width: 90%;
+}
+
+.unselectable {
+  -webkit-user-select: none;
 }

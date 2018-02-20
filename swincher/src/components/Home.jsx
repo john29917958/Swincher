@@ -36,7 +36,7 @@ export default class Home extends Component {
     }
 
     return (
-      <div id="home-page">
+      <div className="unselectable" id="home-page">
         <center>
           <h1 className={ headerClass }>Swincher</h1>
           <br />

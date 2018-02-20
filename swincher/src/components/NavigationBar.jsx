@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import { remote } from 'electron';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { ACTIVATE, DEACTIVATE } from '../constants/ActionTypes';
 import Theme from '../theme/Theme';
 
@@ -40,6 +41,7 @@ class NavigationBar extends Component {
   render() {
     var self = this,
         navbarClass = this.props.activation === ACTIVATE ? Theme.primary : 'grey darken-2',
+        brandLogoColorModifier = this.props.activation === DEACTIVATE ? Theme.primaryText : '',
         resizeButton = this.state.maximized ? (<i className="far fa-window-restore"></i>) : (<i className="material-icons">check_box_outline_blank</i>);
 
     return (
@@ -47,7 +49,9 @@ class NavigationBar extends Component {
         <nav className={ navbarClass + ' nav-extended' }>
           <div id="navbar-resizer"></div>
           <div className="nav-wrapper">
-            <a className="brand-logo left">Swincher</a>
+            <a className={ "brand-logo left " + brandLogoColorModifier }>
+              <i className="icon-brand"></i>
+            </a>
             <ul className="right">
               <li><a onClick={ this.minimizeWindow }><i className="material-icons">remove</i></a></li>
               <li id="resize-button"><a onClick={ this.resizeWindow.bind(self) }>{ resizeButton }</a></li>
