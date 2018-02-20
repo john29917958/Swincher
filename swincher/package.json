@@ -50,7 +50,10 @@
         "icon": "src/favicon.ico"
       },
       "electronWinstallerConfig": {
-        "name": "swincher"
+        "name": "swincher",
+        "exe": "Swincher.exe",
+        "version": "1.0.0",
+        "description": "Easy window switching. Level ups your efficiency."
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -59,7 +62,7 @@
         "name": "Swincher"
       },
       "windowsStoreConfig": {
-        "packageName": "swincher",
+        "packageName": "Swincher",
         "name": "swincher"
       }
     }
